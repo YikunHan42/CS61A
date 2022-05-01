@@ -101,7 +101,7 @@ test = {
           'question': 'When should you use print statements?'
         },
         {
-          'answer': "Print with 'DEBUG:' at the front of the outputted line", # ?
+          'answer': "Print with 'DEBUG:' at the front of the outputted line",
           'choices': [
             "You don't need to do anything, ok only looks at returned values, not printed values",
             "Print with 'DEBUG:' at the front of the outputted line",
