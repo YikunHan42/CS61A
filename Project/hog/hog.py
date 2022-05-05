@@ -126,19 +126,36 @@ def play(strategy0, strategy1, score0=0, score1=0, dice=six_sided,
     "*** YOUR CODE HERE ***"
     # final scores
     addscore0, addscore1 = 0, 0
+    swap_flag0, swap_flag1 = 0, 0
     while(score0 < goal and score1 < goal):
         if(who == 0):
-            if(feral_hogs == True and abs(strategy0(score0, score1) - addscore0) == 2 ): score0 += 3
-            if(strategy0(score0, score1) == 0): addscore0 = take_turn(0, score1)
-            else: addscore0 = take_turn(strategy0(score0, score1), score1, dice)
+            bonus = 0
+            num_rolls0 = strategy0(score0, score1)
+            if(feral_hogs == True and abs(num_rolls0 - addscore0) == 2 and swap_flag0 != 1): bonus = 3
+            if(num_rolls0 == 0):
+                addscore0 = take_turn(0, score1)
+                bonus = 0
+            else: addscore0 = take_turn(num_rolls0, score1, dice)
+            score0 += bonus
             score0 += addscore0
-            if is_swap(score0, score1): score0, score1 = score1, score0
+            swap_flag0 = 0
+            if is_swap(score0, score1):
+                score0, score1 = score1, score0
+                swap_flag0 = 1
         else:
-            if(feral_hogs == True and abs(strategy0(score0, score1) - addscore1) == 2): score1 += 3
-            if(strategy1(score1, score0) == 0): addscore1 = take_turn(0, score0)
-            else: addscore1 = take_turn(strategy1(score1, score0), score0, dice)
+            bonus = 0
+            num_rolls1 = strategy1(score1, score0)
+            if(feral_hogs == True and abs(num_rolls1 - addscore1) == 2 and swap_flag1 != 1): bonus = 3
+            if(num_rolls1 == 0):
+                addscore1 = take_turn(0, score0)
+                bonus = 0
+            else: addscore1 = take_turn(num_rolls1, score0, dice)
+            score1 += bonus
             score1 += addscore1
-            if is_swap(score1, score0): score0, score1 = score1, score0
+            swap_flag1 = 0
+            if is_swap(score1, score0):
+                score0, score1 = score1, score0
+                swap_flag1 = 1
         who = other(who)
     # END PROBLEM 5
     # (note that the indentation for the problem 6 prompt (***YOUR CODE HERE***) might be misleading)
