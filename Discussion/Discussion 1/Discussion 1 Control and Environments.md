@@ -1,6 +1,7 @@
 # Control and Environments
 ![[disc01.pdf]]
 
+[[CS61A]]
 ## Control
 ### If statements
 truthy values(True, a non-zero integer, etc.), falsy values(False, 0, None, "", [], etc.): 
