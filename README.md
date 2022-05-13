@@ -8,6 +8,4 @@ Summer 2020
 
 Instructors: Chae Park, Kavi Gupta, Ryan Moughan
 
-Varies, Typically Tuesday 3-4:30pm. Link will be posted on piazza
-
 [Course Link](https://inst.eecs.berkeley.edu/~cs61a/su20/)
