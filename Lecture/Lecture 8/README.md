@@ -195,7 +195,7 @@ from fractions import gcd
 def rational(n, d):  
     """A representation of the rational number N/D."""  
     g = gcd(n, d)  
-    return [n//g, d//g] 
+    return [n // g, d // g] 
 # reduction of fraction
 ```
 
