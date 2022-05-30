@@ -144,7 +144,7 @@ def even_weighted(s):
 3.3 Write a function that takes in a list and returns the maximum product that can be formed using nonconsecutive elements of the list. The input list will contain only numbers greater than or equal to 1.
 ```python
 def max_product(s):
-	"""Return the maximum product that can be formed using non-consectuove elements of s.
+	"""Return the maximum product that can be formed using non-consective elements of s.
 	>>> max_product([10, 3, 1, 9, 2])
 	90
 	>>> max_product([5, 10, 5, 10, 5])
@@ -152,6 +152,45 @@ def max_product(s):
 	>>> max_product([])
 	1
 	"""
-	if len(s) == 0: return 1
-	
+	n = len(s)
+    def prod(i, odevity):
+        if i >= n:
+            return 1
+        elif odevity == 'odd':
+            return prod(i + 1, 'even')
+        else:
+            return max(prod(i + 1, 'odd') * s[i], prod(i + 1, 'even'))
+        # even now, no consecutive elements are allowed
+	return prod(0, 'even')
 ```
+
+
+
+1. Whole Numbers
+
+   (a) A hole number is a number in which every other digit dips below the digits immediately adjacent to it. For example, the number 968 would be considered a hole number because the number 6 is smaller than both of its surrounding digits. Assume that we only pass in numbers that have an odd number of digits. Define the following function so that it properly identifies hole numbers.
+
+   ```python
+   def check_hole_number(n):
+       """
+       >>> check_hole_number(123)
+       False
+       >>> check_hole_number(3241968)
+       True
+       >>> check_hole_number(3245968)
+       False
+   
+       968 419 324
+       """
+       if n // 10 == 0:
+           return True
+       return n // 10 % 10 < n % 10 and n // 10 % 10 < n // 100 % 10 and check_hole_number(n // 100)
+   ```
+
+​		
+
+​		(b) Define the following function so that it properly identifies mountain numbers. A mountain number is a number that either
+
+​		i.	has digits that strictly decrease from right to left OR strictly increase from right to left
+​		ii.	has digits that increase from right to left up to some point in the middle of the number (not necessarily the exact middle digit). After reaching the maximum digit, the digits to the left of the maximum digit should strictly decrease.
+
